@@ -89,9 +89,9 @@ function japaneseBack() {
         <div class="rule"></div>
       </header>
       <section class="answer-content">
-        <div class="word-row word-row--answer">
+        <div class="word-row word-row--answer word-row--vocabulary">
           ${audioButton("Play word audio")}
-          <div class="answer answer--english">${data.englishWord}</div>
+          <div class="answer answer--english fit-one-line">${data.englishWord}</div>
         </div>
         <div class="metadata metadata--answer metadata--single">
           <span class="part-of-speech">${data.wordType}</span>
@@ -124,12 +124,25 @@ function fitVocabularyToOneLine() {
   const word = root.querySelector(".fit-one-line");
   if (!word) return;
 
+  const row = word.parentElement;
+  const audio = row.querySelector(".audio-button");
+  const rowStyle = window.getComputedStyle(row);
+  const gap = Number.parseFloat(rowStyle.columnGap || rowStyle.gap) || 0;
+  const available = row.clientWidth - (audio ? audio.offsetWidth + gap : 0);
+
+  word.style.width = `${Math.max(available, 0)}px`;
+  word.style.fontSize = "";
+
   let size = Number.parseFloat(window.getComputedStyle(word).fontSize);
-  while (word.scrollWidth > word.clientWidth && size > 28) {
+  while (word.scrollWidth > word.clientWidth && size > 18) {
     size -= 1;
     word.style.fontSize = `${size}px`;
   }
 }
+
+window.addEventListener("resize", () => {
+  requestAnimationFrame(fitVocabularyToOneLine);
+});
 
 directionButton.addEventListener("click", () => {
   direction = direction === "en-ja" ? "ja-en" : "en-ja";
