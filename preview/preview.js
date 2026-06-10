@@ -1,10 +1,9 @@
 const data = {
-  English: "abandon",
-  Japanese: "捨てる、断念する",
-  Pronunciation: "/əˈbændən/",
-  PartOfSpeech: "verb / 動詞",
-  ExampleEnglish: "He had to abandon the plan.",
-  ExampleJapanese: "彼はその計画を断念しなければならなかった。",
+  englishWord: "abandon",
+  japaneseMeaning: "捨てる、断念する",
+  wordType: "動詞 / verb",
+  englishExample: "He had to abandon the plan.",
+  japaneseExample: "彼はその計画を断念しなければならなかった。",
 };
 
 let direction = "en-ja";
@@ -36,13 +35,11 @@ function englishFront() {
       <section class="prompt-block">
         <div class="word-row word-row--vocabulary">
           ${audioButton("Play word audio")}
-          <div class="prompt prompt--english fit-one-line">${data.English}</div>
+          <div class="prompt prompt--english fit-one-line">${data.englishWord}</div>
         </div>
         <div class="rule"></div>
-        <div class="metadata">
-          <span class="pronunciation">${data.Pronunciation}</span>
-          <span class="metadata-divider"></span>
-          <span class="part-of-speech">${data.PartOfSpeech}</span>
+        <div class="metadata metadata--single">
+          <span class="part-of-speech">${data.wordType}</span>
         </div>
       </section>
     </main>`;
@@ -52,17 +49,17 @@ function englishBack() {
   return `
     <main class="study-card study-card--back">
       <header class="answer-header">
-        <div class="answer-kicker">${data.English}</div>
+        <div class="answer-kicker">${data.englishWord}</div>
         <div class="rule"></div>
       </header>
       <section class="answer-content">
-        <div class="answer answer--japanese">${data.Japanese}</div>
+        <div class="answer answer--japanese">${data.japaneseMeaning}</div>
         <div class="accent-rule" aria-hidden="true"><span></span></div>
         <div class="example-row">
           ${audioButton("Play example audio", true)}
-          <div class="example example--english">${data.ExampleEnglish}</div>
+          <div class="example example--english">${data.englishExample}</div>
         </div>
-        <div class="translation">${data.ExampleJapanese}</div>
+        <div class="translation">${data.japaneseExample}</div>
       </section>
       ${corners()}
     </main>`;
@@ -74,11 +71,11 @@ function japaneseFront() {
       ${corners(true)}
       <section class="prompt-block">
         <div class="word-row word-row--vocabulary">
-          <div class="prompt prompt--japanese fit-one-line">${data.Japanese}</div>
+          <div class="prompt prompt--japanese fit-one-line">${data.japaneseMeaning}</div>
         </div>
         <div class="rule"></div>
         <div class="metadata metadata--single">
-          <span class="part-of-speech">${data.PartOfSpeech}</span>
+          <span class="part-of-speech">${data.wordType}</span>
         </div>
       </section>
     </main>`;
@@ -88,24 +85,22 @@ function japaneseBack() {
   return `
     <main class="study-card study-card--back">
       <header class="answer-header">
-        <div class="answer-kicker">${data.Japanese}</div>
+        <div class="answer-kicker">${data.japaneseMeaning}</div>
         <div class="rule"></div>
       </header>
       <section class="answer-content">
         <div class="word-row word-row--answer">
           ${audioButton("Play word audio")}
-          <div class="answer answer--english">${data.English}</div>
+          <div class="answer answer--english">${data.englishWord}</div>
         </div>
-        <div class="metadata metadata--answer">
-          <span class="pronunciation">${data.Pronunciation}</span>
-          <span class="metadata-divider"></span>
-          <span class="part-of-speech">${data.PartOfSpeech}</span>
+        <div class="metadata metadata--answer metadata--single">
+          <span class="part-of-speech">${data.wordType}</span>
         </div>
         <div class="accent-rule" aria-hidden="true"><span></span></div>
-        <div class="example example--japanese">${data.ExampleJapanese}</div>
+        <div class="example example--japanese">${data.japaneseExample}</div>
         <div class="example-row example-row--translation">
           ${audioButton("Play example audio", true)}
-          <div class="translation translation--english">${data.ExampleEnglish}</div>
+          <div class="translation translation--english">${data.englishExample}</div>
         </div>
       </section>
       ${corners()}
