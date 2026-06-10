@@ -21,6 +21,19 @@ generate MP3 files or create audio fields.
 
 ## Install
 
+### Import the packaged deck
+
+Import `dist/beginner-english-japanese.apkg` with Anki's
+`File > Import` command. It includes:
+
+- The reversible note type
+- English to Japanese and Japanese to English card templates
+- One sample note for `abandon`
+
+You can delete the sample note after confirming that the cards and TTS work.
+
+### Manual installation
+
 In Anki, create a new note type with the fields above. Add two card types and
 paste in the matching files from `templates/`:
 
@@ -52,3 +65,11 @@ template:
 
 Open `preview/index.html` in a browser. Use the controls above the card to
 switch direction, reveal the answer, and toggle dark mode.
+
+## Rebuild the APKG
+
+Install `genanki`, then run:
+
+```bash
+python tools/build_apkg.py
+```
