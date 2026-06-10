@@ -1,23 +1,23 @@
 <main class="study-card study-card--back">
   <header class="answer-header">
-    <div class="answer-kicker">{{English}}</div>
+    <div class="answer-kicker">{{英単語}}</div>
     <div class="rule"></div>
   </header>
 
   <section class="answer-content">
-    <div class="answer answer--japanese">{{Japanese}}</div>
+    <div class="answer answer--japanese">{{日本語の意味}}</div>
     <div class="accent-rule" aria-hidden="true"><span></span></div>
 
-    {{#ExampleEnglish}}
+    {{#英語の例文}}
     <div class="example-row">
-      <span class="audio-button audio-button--small">{{tts en_US:ExampleEnglish}}</span>
-      <div class="example example--english">{{ExampleEnglish}}</div>
+      <span class="audio-button audio-button--small">{{tts en_US:英語の例文}}</span>
+      <div class="example example--english">{{英語の例文}}</div>
     </div>
-    {{/ExampleEnglish}}
+    {{/英語の例文}}
 
-    {{#ExampleJapanese}}
-    <div class="translation">{{ExampleJapanese}}</div>
-    {{/ExampleJapanese}}
+    {{#例文の日本語訳}}
+    <div class="translation">{{例文の日本語訳}}</div>
+    {{/例文の日本語訳}}
   </section>
 
   <div class="corner corner--bottom" aria-hidden="true"></div>

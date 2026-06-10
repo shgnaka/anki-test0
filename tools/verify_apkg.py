@@ -29,18 +29,17 @@ templates = " ".join(
 )
 
 assert field_names == [
-    "English",
-    "Japanese",
-    "Pronunciation",
-    "PartOfSpeech",
-    "ExampleEnglish",
-    "ExampleJapanese",
+    "英単語",
+    "日本語の意味",
+    "品詞",
+    "英語の例文",
+    "例文の日本語訳",
 ]
 assert template_names == ["English → Japanese", "Japanese → English"]
 assert note_count == 1
 assert card_count == 2
-assert "{{tts en_US:English}}" in templates
-assert "{{tts en_US:ExampleEnglish}}" in templates
+assert "{{tts en_US:英単語}}" in templates
+assert "{{tts en_US:英語の例文}}" in templates
 
 print(
     f"verified: {len(field_names)} fields, {len(template_names)} templates, "

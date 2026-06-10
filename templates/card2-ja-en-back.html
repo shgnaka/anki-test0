@@ -1,32 +1,33 @@
 <main class="study-card study-card--back">
   <header class="answer-header">
-    <div class="answer-kicker">{{Japanese}}</div>
+    <div class="answer-kicker">{{日本語の意味}}</div>
     <div class="rule"></div>
   </header>
 
   <section class="answer-content">
     <div class="word-row word-row--answer">
-      <span class="audio-button">{{tts en_US:English}}</span>
-      <div class="answer answer--english">{{English}}</div>
+      <span class="audio-button">{{tts en_US:英単語}}</span>
+      <div class="answer answer--english">{{英単語}}</div>
     </div>
 
-    <div class="metadata metadata--answer">
-      {{#Pronunciation}}<span class="pronunciation">{{Pronunciation}}</span>{{/Pronunciation}}
-      {{#PartOfSpeech}}<span class="metadata-divider"></span><span class="part-of-speech">{{PartOfSpeech}}</span>{{/PartOfSpeech}}
+    {{#品詞}}
+    <div class="metadata metadata--answer metadata--single">
+      <span class="part-of-speech">{{品詞}}</span>
     </div>
+    {{/品詞}}
 
     <div class="accent-rule" aria-hidden="true"><span></span></div>
 
-    {{#ExampleJapanese}}
-    <div class="example example--japanese">{{ExampleJapanese}}</div>
-    {{/ExampleJapanese}}
+    {{#例文の日本語訳}}
+    <div class="example example--japanese">{{例文の日本語訳}}</div>
+    {{/例文の日本語訳}}
 
-    {{#ExampleEnglish}}
+    {{#英語の例文}}
     <div class="example-row example-row--translation">
-      <span class="audio-button audio-button--small">{{tts en_US:ExampleEnglish}}</span>
-      <div class="translation translation--english">{{ExampleEnglish}}</div>
+      <span class="audio-button audio-button--small">{{tts en_US:英語の例文}}</span>
+      <div class="translation translation--english">{{英語の例文}}</div>
     </div>
-    {{/ExampleEnglish}}
+    {{/英語の例文}}
   </section>
 
   <div class="corner corner--bottom" aria-hidden="true"></div>

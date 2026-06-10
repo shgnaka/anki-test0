@@ -3,16 +3,17 @@
   <div class="corner-dots corner-dots--top" aria-hidden="true"></div>
   <section class="prompt-block">
     <div class="word-row word-row--vocabulary">
-      <span class="audio-button">{{tts en_US:English}}</span>
-      <div class="prompt prompt--english fit-one-line">{{English}}</div>
+      <span class="audio-button">{{tts en_US:英単語}}</span>
+      <div class="prompt prompt--english fit-one-line">{{英単語}}</div>
     </div>
 
     <div class="rule"></div>
 
-    <div class="metadata">
-      {{#Pronunciation}}<span class="pronunciation">{{Pronunciation}}</span>{{/Pronunciation}}
-      {{#PartOfSpeech}}<span class="metadata-divider"></span><span class="part-of-speech">{{PartOfSpeech}}</span>{{/PartOfSpeech}}
+    {{#品詞}}
+    <div class="metadata metadata--single">
+      <span class="part-of-speech">{{品詞}}</span>
     </div>
+    {{/品詞}}
   </section>
   <div class="corner corner--bottom" aria-hidden="true"></div>
   <div class="corner-dots corner-dots--bottom" aria-hidden="true"></div>

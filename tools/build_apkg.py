@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TEMPLATES = ROOT / "templates"
 DIST = ROOT / "dist"
 
-MODEL_ID = 1607392319
+MODEL_ID = 1607392320
 DECK_ID = 2059400110
 
 
@@ -19,12 +19,11 @@ model = genanki.Model(
     MODEL_ID,
     "Beginner English-Japanese Reversible",
     fields=[
-        {"name": "English"},
-        {"name": "Japanese"},
-        {"name": "Pronunciation"},
-        {"name": "PartOfSpeech"},
-        {"name": "ExampleEnglish"},
-        {"name": "ExampleJapanese"},
+        {"name": "英単語"},
+        {"name": "日本語の意味"},
+        {"name": "品詞"},
+        {"name": "英語の例文"},
+        {"name": "例文の日本語訳"},
     ],
     templates=[
         {
@@ -50,8 +49,7 @@ deck.add_note(
         fields=[
             "abandon",
             "捨てる、断念する",
-            "/əˈbændən/",
-            "verb / 動詞",
+            "動詞 / verb",
             "He had to abandon the plan.",
             "彼はその計画を断念しなければならなかった。",
         ],
