@@ -4,7 +4,7 @@
   <section class="prompt-block">
     <div class="word-row word-row--vocabulary">
       <span class="audio-button">{{tts en_US:英単語}}</span>
-      <div class="prompt prompt--english fit-one-line">{{英単語}}</div>
+      <div class="prompt prompt--english fit-vocabulary">{{英単語}}</div>
     </div>
 
     <div class="rule"></div>
@@ -22,7 +22,7 @@
 <script>
   (function () {
     function fitVocabulary() {
-      var word = document.querySelector(".fit-one-line");
+      var word = document.querySelector(".fit-vocabulary");
       if (!word) return;
 
       var row = word.parentElement;
@@ -30,19 +30,33 @@
       var rowStyle = window.getComputedStyle(row);
       var gap = parseFloat(rowStyle.columnGap || rowStyle.gap) || 0;
       var available = row.clientWidth - (audio ? audio.offsetWidth + gap : 0);
+      var characterCount = word.textContent.replace(/[^A-Za-z]/g, "").length;
+      var useTwoLines = characterCount > 24;
 
       word.style.width = Math.max(available, 0) + "px";
       word.style.fontSize = "";
+      word.classList.toggle("fit-vocabulary--two-lines", useTwoLines);
+      row.classList.toggle("word-row--two-lines", useTwoLines);
 
       var size = parseFloat(window.getComputedStyle(word).fontSize);
-      while (word.scrollWidth > word.clientWidth && size > 18) {
-        size -= 1;
-        word.style.fontSize = size + "px";
+      var minimumSize = useTwoLines ? 18 : 14;
+
+      if (useTwoLines) {
+        while (word.scrollHeight > size * 2.35 && size > minimumSize) {
+          size -= 1;
+          word.style.fontSize = size + "px";
+        }
+      } else {
+        while (word.scrollWidth > word.clientWidth && size > minimumSize) {
+          size -= 1;
+          word.style.fontSize = size + "px";
+        }
       }
     }
 
     requestAnimationFrame(fitVocabulary);
     setTimeout(fitVocabulary, 100);
+    setTimeout(fitVocabulary, 350);
     window.addEventListener("resize", fitVocabulary);
   })();
 </script>

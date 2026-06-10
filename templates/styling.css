@@ -68,13 +68,28 @@
   width: 100%;
 }
 
-.word-row--vocabulary .fit-one-line {
+.word-row--vocabulary .fit-one-line,
+.word-row--vocabulary .fit-vocabulary {
   flex: 0 0 auto;
   min-width: 0;
   max-width: 100%;
   white-space: nowrap !important;
   overflow-wrap: normal !important;
   word-break: keep-all !important;
+}
+
+.word-row--vocabulary.word-row--two-lines {
+  align-items: flex-start;
+}
+
+.word-row--vocabulary .fit-vocabulary--two-lines {
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .prompt,
