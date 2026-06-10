@@ -1,5 +1,5 @@
 const data = {
-  englishWord: "abandon",
+  englishWord: "misunderstanding",
   japaneseMeaning: "捨てる、断念する",
   wordType: "動詞 / verb",
   englishExample: "He had to abandon the plan.",
@@ -35,7 +35,7 @@ function englishFront() {
       <section class="prompt-block">
         <div class="word-row word-row--vocabulary">
           ${audioButton("Play word audio")}
-          <div class="prompt prompt--english fit-one-line">${data.englishWord}</div>
+          <div class="prompt prompt--english fit-vocabulary">${data.englishWord}</div>
         </div>
         <div class="rule"></div>
         <div class="metadata metadata--single">
@@ -91,7 +91,7 @@ function japaneseBack() {
       <section class="answer-content">
         <div class="word-row word-row--answer word-row--vocabulary">
           ${audioButton("Play word audio")}
-          <div class="answer answer--english fit-one-line">${data.englishWord}</div>
+          <div class="answer answer--english fit-vocabulary">${data.englishWord}</div>
         </div>
         <div class="metadata metadata--answer metadata--single">
           <span class="part-of-speech">${data.wordType}</span>
@@ -121,7 +121,7 @@ function render() {
 }
 
 function fitVocabularyToOneLine() {
-  const word = root.querySelector(".fit-one-line");
+  const word = root.querySelector(".fit-vocabulary, .fit-one-line");
   if (!word) return;
 
   const row = word.parentElement;
@@ -129,14 +129,27 @@ function fitVocabularyToOneLine() {
   const rowStyle = window.getComputedStyle(row);
   const gap = Number.parseFloat(rowStyle.columnGap || rowStyle.gap) || 0;
   const available = row.clientWidth - (audio ? audio.offsetWidth + gap : 0);
+  const characterCount = word.textContent.replace(/[^A-Za-z]/g, "").length;
+  const useTwoLines = characterCount > 24;
 
   word.style.width = `${Math.max(available, 0)}px`;
   word.style.fontSize = "";
+  word.classList.toggle("fit-vocabulary--two-lines", useTwoLines);
+  row.classList.toggle("word-row--two-lines", useTwoLines);
 
   let size = Number.parseFloat(window.getComputedStyle(word).fontSize);
-  while (word.scrollWidth > word.clientWidth && size > 18) {
-    size -= 1;
-    word.style.fontSize = `${size}px`;
+  const minimumSize = useTwoLines ? 18 : 14;
+
+  if (useTwoLines) {
+    while (word.scrollHeight > size * 2.35 && size > minimumSize) {
+      size -= 1;
+      word.style.fontSize = `${size}px`;
+    }
+  } else {
+    while (word.scrollWidth > word.clientWidth && size > minimumSize) {
+      size -= 1;
+      word.style.fontSize = `${size}px`;
+    }
   }
 }
 
