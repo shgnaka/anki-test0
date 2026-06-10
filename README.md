@@ -18,6 +18,10 @@ Create the fields in this order:
 The card uses Anki's built-in text-to-speech support. You do not need to
 generate MP3 files or create audio fields.
 
+Vocabulary words up to 24 alphabetic characters are reduced as needed to stay
+on one line. Exceptional words over 24 characters may use up to two lines so
+they remain readable without overflowing narrow phone screens.
+
 ## Install
 
 ### Import the packaged deck
