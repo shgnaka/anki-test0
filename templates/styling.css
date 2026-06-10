@@ -63,6 +63,18 @@
   margin-bottom: 22px;
 }
 
+.word-row--vocabulary {
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.word-row--vocabulary .prompt {
+  min-width: 0;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 .prompt,
 .answer {
   color: var(--ink);
@@ -282,6 +294,11 @@
   .word-row,
   .example-row {
     gap: 14px;
+  }
+
+  .word-row--vocabulary .audio-button {
+    width: 52px;
+    height: 52px;
   }
 
   .metadata {

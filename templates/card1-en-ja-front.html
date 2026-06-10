@@ -2,9 +2,9 @@
   <div class="corner corner--top" aria-hidden="true"></div>
   <div class="corner-dots corner-dots--top" aria-hidden="true"></div>
   <section class="prompt-block">
-    <div class="word-row">
+    <div class="word-row word-row--vocabulary">
       <span class="audio-button">{{tts en_US:English}}</span>
-      <div class="prompt prompt--english">{{English}}</div>
+      <div class="prompt prompt--english fit-one-line">{{English}}</div>
     </div>
 
     <div class="rule"></div>
@@ -17,3 +17,16 @@
   <div class="corner corner--bottom" aria-hidden="true"></div>
   <div class="corner-dots corner-dots--bottom" aria-hidden="true"></div>
 </main>
+
+<script>
+  (function () {
+    var word = document.querySelector(".fit-one-line");
+    if (!word) return;
+
+    var size = parseFloat(window.getComputedStyle(word).fontSize);
+    while (word.scrollWidth > word.clientWidth && size > 28) {
+      size -= 1;
+      word.style.fontSize = size + "px";
+    }
+  })();
+</script>

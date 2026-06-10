@@ -34,9 +34,9 @@ function englishFront() {
     <main class="study-card study-card--front">
       ${corners(true)}
       <section class="prompt-block">
-        <div class="word-row">
+        <div class="word-row word-row--vocabulary">
           ${audioButton("Play word audio")}
-          <div class="prompt prompt--english">${data.English}</div>
+          <div class="prompt prompt--english fit-one-line">${data.English}</div>
         </div>
         <div class="rule"></div>
         <div class="metadata">
@@ -73,8 +73,8 @@ function japaneseFront() {
     <main class="study-card study-card--front">
       ${corners(true)}
       <section class="prompt-block">
-        <div class="word-row">
-          <div class="prompt prompt--japanese">${data.Japanese}</div>
+        <div class="word-row word-row--vocabulary">
+          <div class="prompt prompt--japanese fit-one-line">${data.Japanese}</div>
         </div>
         <div class="rule"></div>
         <div class="metadata metadata--single">
@@ -122,6 +122,18 @@ function render() {
   directionButton.textContent =
     direction === "en-ja" ? "English → Japanese" : "Japanese → English";
   revealButton.textContent = showingAnswer ? "Show front" : "Show answer";
+  fitVocabularyToOneLine();
+}
+
+function fitVocabularyToOneLine() {
+  const word = root.querySelector(".fit-one-line");
+  if (!word) return;
+
+  let size = Number.parseFloat(window.getComputedStyle(word).fontSize);
+  while (word.scrollWidth > word.clientWidth && size > 28) {
+    size -= 1;
+    word.style.fontSize = `${size}px`;
+  }
 }
 
 directionButton.addEventListener("click", () => {
