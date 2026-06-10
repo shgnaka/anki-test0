@@ -47,7 +47,13 @@
           word.style.fontSize = size + "px";
         }
       } else {
-        while (word.scrollWidth > word.clientWidth && size > minimumSize) {
+        var required = word.scrollWidth;
+        if (required > available && available > 0) {
+          size = Math.max(minimumSize, Math.floor(size * available / required));
+          word.style.fontSize = size + "px";
+        }
+
+        while (word.scrollWidth > available && size > 10) {
           size -= 1;
           word.style.fontSize = size + "px";
         }

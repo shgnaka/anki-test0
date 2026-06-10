@@ -42,6 +42,7 @@
 
 .study-card--front {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
 }
 
@@ -50,6 +51,8 @@
 .answer-content {
   position: relative;
   z-index: 2;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .word-row,
@@ -66,13 +69,18 @@
 .word-row--vocabulary {
   flex-wrap: nowrap;
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .word-row--vocabulary .fit-one-line,
 .word-row--vocabulary .fit-vocabulary {
-  flex: 0 0 auto;
+  flex: 1 1 0;
+  width: 0;
   min-width: 0;
   max-width: 100%;
+  overflow: hidden;
   white-space: nowrap !important;
   overflow-wrap: normal !important;
   word-break: keep-all !important;
@@ -84,6 +92,7 @@
 
 .word-row--vocabulary .fit-vocabulary--two-lines {
   display: -webkit-box;
+  width: auto;
   overflow: hidden;
   white-space: normal !important;
   overflow-wrap: anywhere !important;
@@ -316,6 +325,14 @@
   .word-row--vocabulary .audio-button {
     width: 52px;
     height: 52px;
+  }
+
+  .prompt--english {
+    font-size: clamp(34px, 11vw, 52px);
+  }
+
+  .answer--english {
+    font-size: clamp(32px, 10vw, 48px);
   }
 
   .metadata {
