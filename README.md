@@ -9,12 +9,11 @@ This package contains a beginner-friendly note type that creates two cards:
 
 Create the fields in this order:
 
-1. `English`
-2. `Japanese`
-3. `Pronunciation`
-4. `PartOfSpeech`
-5. `ExampleEnglish`
-6. `ExampleJapanese`
+1. `英単語`
+2. `日本語の意味`
+3. `品詞`
+4. `英語の例文`
+5. `例文の日本語訳`
 
 The card uses Anki's built-in text-to-speech support. You do not need to
 generate MP3 files or create audio fields.
@@ -44,8 +43,8 @@ paste in the matching files from `templates/`:
 The templates use:
 
 ```text
-{{tts en_US:English}}
-{{tts en_US:ExampleEnglish}}
+{{tts en_US:英単語}}
+{{tts en_US:英語の例文}}
 ```
 
 Anki reads the word and example sentence using an installed US English system
