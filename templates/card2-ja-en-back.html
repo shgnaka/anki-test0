@@ -1,0 +1,34 @@
+<main class="study-card study-card--back">
+  <header class="answer-header">
+    <div class="answer-kicker">{{Japanese}}</div>
+    <div class="rule"></div>
+  </header>
+
+  <section class="answer-content">
+    <div class="word-row word-row--answer">
+      <span class="audio-button">{{tts en_US:English}}</span>
+      <div class="answer answer--english">{{English}}</div>
+    </div>
+
+    <div class="metadata metadata--answer">
+      {{#Pronunciation}}<span class="pronunciation">{{Pronunciation}}</span>{{/Pronunciation}}
+      {{#PartOfSpeech}}<span class="metadata-divider"></span><span class="part-of-speech">{{PartOfSpeech}}</span>{{/PartOfSpeech}}
+    </div>
+
+    <div class="accent-rule" aria-hidden="true"><span></span></div>
+
+    {{#ExampleJapanese}}
+    <div class="example example--japanese">{{ExampleJapanese}}</div>
+    {{/ExampleJapanese}}
+
+    {{#ExampleEnglish}}
+    <div class="example-row example-row--translation">
+      <span class="audio-button audio-button--small">{{tts en_US:ExampleEnglish}}</span>
+      <div class="translation translation--english">{{ExampleEnglish}}</div>
+    </div>
+    {{/ExampleEnglish}}
+  </section>
+
+  <div class="corner corner--bottom" aria-hidden="true"></div>
+  <div class="corner-dots corner-dots--bottom" aria-hidden="true"></div>
+</main>

@@ -1,0 +1,19 @@
+<main class="study-card study-card--front">
+  <div class="corner corner--top" aria-hidden="true"></div>
+  <div class="corner-dots corner-dots--top" aria-hidden="true"></div>
+  <section class="prompt-block">
+    <div class="word-row">
+      <div class="prompt prompt--japanese">{{Japanese}}</div>
+    </div>
+
+    <div class="rule"></div>
+
+    {{#PartOfSpeech}}
+    <div class="metadata metadata--single">
+      <span class="part-of-speech">{{PartOfSpeech}}</span>
+    </div>
+    {{/PartOfSpeech}}
+  </section>
+  <div class="corner corner--bottom" aria-hidden="true"></div>
+  <div class="corner-dots corner-dots--bottom" aria-hidden="true"></div>
+</main>
